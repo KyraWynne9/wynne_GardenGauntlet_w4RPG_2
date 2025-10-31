@@ -101,6 +101,10 @@ let flower = {
     leftKey: "a",
     rightKey: "d",
     sprite : itemSprite,
+    moveToARandomPlace : function () {
+        flower.x = Math.random() * canvas.width;
+        flower.y = Math.random() * canvas.height;
+    },
     draw: function() {
         pencil.drawImage(this.sprite, this.x, this.y, this.width, this.height);
     },
@@ -149,12 +153,10 @@ function gameLoop() {
     flower.draw()
 
     if (getDistance(minerva, flower) < 30){
-        flower.x = Math.random() * canvas.width;
-        flower.y = Math.random() * canvas.height;
+        flower.moveToARandomPlace();
     }
     if (getDistance(festus, flower) < 30){
-        flower.x = Math.random() * canvas.width;
-        flower.y = Math.random() * canvas.height;
+        flower.moveToARandomPlace();
     }
     
 };
