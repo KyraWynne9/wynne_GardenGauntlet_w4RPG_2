@@ -148,15 +148,16 @@ function gameLoop() {
     // Draw item
     flower.draw()
         debounce(); {
-        flower.x = Math.random() * canvas.width;
-        flower.y = Math.random() * canvas.height;
+
 };
 
     if (getDistance(minerva, flower) < 30){
-        itemSprite.debounce = false;
+        flower.x = Math.random() * canvas.width;
+        flower.y = Math.random() * canvas.height;
     }
     if (getDistance(festus, flower) < 30){
-        itemSprite.debounce = false;
+        flower.x = Math.random() * canvas.width;
+        flower.y = Math.random() * canvas.height;
     }
     
 };
