@@ -147,9 +147,6 @@ function gameLoop() {
 
     // Draw item
     flower.draw()
-        debounce(); {
-
-};
 
     if (getDistance(minerva, flower) < 30){
         flower.x = Math.random() * canvas.width;
