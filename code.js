@@ -133,6 +133,21 @@ function getDistance(a, b) {
     return Math.sqrt(dx*dx + dy*dy);
 }
 
+// points
+
+score = 0
+
+function addPoints(amount) {
+    score += amount;
+    updateScoreDisplay();
+}
+
+function updateScoreDisplay() {
+    const scoreElement = document.getElementById('scoreDisplay');
+    if (scoreElement) {
+        scoreElement.textContent = 'Score: {score}';
+    }
+}
 
 // -----------------------------------------------
 // Game loop
