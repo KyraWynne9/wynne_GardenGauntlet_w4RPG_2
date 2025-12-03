@@ -1,4 +1,8 @@
-import { Minerva } from "./minerva.js"
+import { Minerva } from "./minerva.js";
+import { Lillie } from "./lillie.js";
+import { Guastav } from "./gustav.js"
+import { Princeton } from "./princeton.js"
+import { Winona } from "./winona.js"
 
 // Get the canvas and drawing context
 let canvas = document.getElementById("gameCanvas");
