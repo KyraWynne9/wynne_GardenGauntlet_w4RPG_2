@@ -1,3 +1,5 @@
+import { Minerva } from "./minerva.js"
+
 // Get the canvas and drawing context
 let canvas = document.getElementById("gameCanvas");
 let pencil = canvas.getContext("2d");
