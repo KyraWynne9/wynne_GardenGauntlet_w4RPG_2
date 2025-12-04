@@ -1,6 +1,6 @@
 import { Minerva } from "./minerva.js";
 import { Lillie } from "./lillie.js";
-import { Guastav } from "./gustav.js"
+import { Gustav } from "./gustav.js"
 import { Princeton } from "./princeton.js"
 import { Winona } from "./winona.js"
 
@@ -9,16 +9,11 @@ let canvas = document.getElementById("gameCanvas");
 let pencil = canvas.getContext("2d");
 pencil.imageSmoothingEnabled = false
 
-//grab zombie images
+//grab images
 let minervaBack = document.getElementById("Minerva_back");
 let minervaFront = document.getElementById("Minerva_front");
 let minervaRight = document.getElementById("Minerva_right");
 let minervaLeft = document.getElementById("Minerva_left");
-
-let festusBack = document.getElementById("Cirque_back");
-let festusFront = document.getElementById("Cirque_front");
-let festusRight = document.getElementById("Cirque_right");
-let festusLeft = document.getElementById("Cirque_left");
 
 let background = document.getElementById("Background");
 
@@ -28,9 +23,18 @@ let itemSprite = document.getElementById("Memory_flower");
 
 // -----------------------------------------------
 
+// characters array
+let characters = [
+    new Minerva(),
+    new Lillie(),
+    new Gustav(),
+    new Princeton(),
+    new Winona(),
 
-// Character objects
-let minerva = {
+]
+
+// player controls
+player1 = {
     x: 100,
     y: 150,
     width: 75,
@@ -40,7 +44,7 @@ let minerva = {
     downKey: "s",
     leftKey: "a",
     rightKey: "d",
-    sprite : minervaFront,
+    sprite : this.sprite,
     draw: function() {
         pencil.drawImage(this.sprite, this.x, this.y, this.width, this.height);
     },
@@ -64,7 +68,7 @@ let minerva = {
     }
 };
 
-let festus = {
+player2 = {
     x: 900,
     y: 150,
     width: 100,
@@ -147,14 +151,18 @@ score = 0
 
 function addPoints(amount) {
     score += amount;
-    updateScoreDisplay();
+    raiseScore();
+}
+    function raiseScore() {
+    score += 1;
+    let scoreElement = document.getElementById("score1");
+    scoreElement.innerHTML = "scoreDisplay1" + score;
 }
 
-function updateScoreDisplay() {
-    const scoreElement = document.getElementById('scoreDisplay');
-    if (scoreElement) {
-        scoreElement.textContent = 'Score: {score}';
-    }
+    function raiseScore() {
+    score += 1;
+    let scoreElement = document.getElementById("score2");
+    scoreElement.innerHTML = "scoreDisplay2" + score;
 }
 
 // -----------------------------------------------

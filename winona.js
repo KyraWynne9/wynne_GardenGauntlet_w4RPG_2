@@ -1,4 +1,4 @@
-export class Winina {
+export class Winona {
 
     
 }
