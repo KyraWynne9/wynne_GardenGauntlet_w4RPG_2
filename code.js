@@ -3,11 +3,14 @@ import { Lillie } from "./lillie.js";
 import { Gustav } from "./gustav.js"
 import { Princeton } from "./princeton.js"
 import { Winona } from "./winona.js"
+import { Toolbox } from "./toolbox.js";
 
 // Get the canvas and drawing context
 let canvas = document.getElementById("gameCanvas");
 let pencil = canvas.getContext("2d");
 pencil.imageSmoothingEnabled = false
+
+
 
 //grab images
 let minervaBack = document.getElementById("Minerva_back");
@@ -32,6 +35,12 @@ let characters = [
     new Winona(),
 
 ]
+
+let toolbox = new Toolbox()
+let chosenCharacter = toolbox.getRandomItem(characters)
+
+console.log(chosenCharacter);
+
 
 // player controls
 player1 = {
