@@ -27,6 +27,8 @@ let background = document.getElementById("Background");
 let itemSprite = document.getElementById("Memory_flower");
 
 // -----------------------------------------------
+
+
 // Character objects
 let minerva = {
     x: 100,
