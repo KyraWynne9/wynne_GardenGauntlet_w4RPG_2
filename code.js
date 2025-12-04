@@ -13,10 +13,6 @@ pencil.imageSmoothingEnabled = false
 
 
 //grab images
-let minervaBack = document.getElementById("Minerva_back");
-let minervaFront = document.getElementById("Minerva_front");
-let minervaRight = document.getElementById("Minerva_right");
-let minervaLeft = document.getElementById("Minerva_left");
 
 let background = document.getElementById("Background");
 
@@ -27,7 +23,15 @@ let itemSprite = document.getElementById("Memory_flower");
 // -----------------------------------------------
 
 // characters array
-let characters = [
+let characters1 = [
+    new Minerva(),
+    new Lillie(),
+    new Gustav(),
+    new Princeton(),
+    new Winona(),
+
+]
+let characters2 = [
     new Minerva(),
     new Lillie(),
     new Gustav(),
@@ -37,79 +41,22 @@ let characters = [
 ]
 
 let toolbox = new Toolbox()
-let chosenCharacter = toolbox.getRandomItem(characters)
+let player1 = toolbox.getRandomItem(characters1)
+player1.setup(50, 100, "w", "s", "d", "a")
 
-console.log(chosenCharacter);
+console.log(player1.name)
+
+let player2 = toolbox.getRandomItem(characters2)
+player2.setup(775, 100, "i", "k", "l", "j")
+
+console.log(player2.name)
 
 
 // player controls
-player1 = {
-    x: 100,
-    y: 150,
-    width: 75,
-    height: 75,
-    speed: 10,
-    upKey: "w",
-    downKey: "s",
-    leftKey: "a",
-    rightKey: "d",
-    sprite : this.sprite,
-    draw: function() {
-        pencil.drawImage(this.sprite, this.x, this.y, this.width, this.height);
-    },
-    move: function(keysPressed) {
-        if(keysPressed.d) {
-            this.sprite = minervaLeft
-            this.x += 7;
-        }
-        else if(keysPressed.a) {
-            this.sprite = minervaRight
-            this.x -= 7;
-        }
-        else if(keysPressed.s) {
-            this.sprite = minervaFront
-            this.y += 7;
-        }
-        else if(keysPressed.w) {
-            this.sprite = minervaBack
-            this.y -= 7;
-        }
-    }
-};
+// let player1 = new Minerva(50, 50, "w", "s", "d", "a");
 
-player2 = {
-    x: 900,
-    y: 150,
-    width: 100,
-    height: 100,
-    speed: 10,
-    upKey: "i",
-    downKey: "k",
-    leftKey: "j",
-    rightKey: "l",
-    sprite : festusFront,
-    draw: function() {
-        pencil.drawImage(this.sprite, this.x, this.y, this.width, this.height);
-    },
-    move: function(keysPressed) {
-        if(keysPressed.l) {
-            this.sprite = festusLeft
-            this.x += 7;
-        }
-        else if(keysPressed.j) {
-            this.sprite = festusRight
-            this.x -= 7;
-        }
-        else if(keysPressed.k) {
-            this.sprite = festusFront
-            this.y += 7;
-        }
-        else if(keysPressed.i) {
-            this.sprite = festusBack
-            this.y -= 7;
-        }
-    }
-};
+
+//let player2 = new Minerva(50, 150, "i", "k", "l", "j");
 
 let flower = {
     x: 510,
@@ -156,22 +103,19 @@ function getDistance(a, b) {
 
 // points
 
-score = 0
+let score1 = 0
 
-function addPoints(amount) {
-    score += amount;
-    raiseScore();
+function raiseScore() {
+    score1 += 1;
+    let scoreElement = document.getElementById("scoreDisplay1");
+    scoreElement.innerHTML = "Player 1: " + score1;
 }
-    function raiseScore() {
-    score += 1;
-    let scoreElement = document.getElementById("score1");
-    scoreElement.innerHTML = "scoreDisplay1" + score;
-}
+let score2 = 0
 
-    function raiseScore() {
-    score += 1;
-    let scoreElement = document.getElementById("score2");
-    scoreElement.innerHTML = "scoreDisplay2" + score;
+function raiseScore2() {
+    score2 += 1;
+    let scoreElement = document.getElementById("scoreDisplay2");
+    scoreElement.innerHTML = "Player 2: " + score2;
 }
 
 // -----------------------------------------------
@@ -182,21 +126,23 @@ function gameLoop() {
     pencil.drawImage(background, 0, 0, canvas.width, canvas.height);
 
     // Move characters
-    minerva.move(keysPressed);
-    festus.move(keysPressed);
+    player1.move(keysPressed);
+    player2.move(keysPressed);
 
     // Draw characters
-    minerva.draw();
-    festus.draw(keysPressed);
+    player1.draw();
+    player2.draw(keysPressed);
 
     // Draw item
     flower.draw()
 
-    if (getDistance(minerva, flower) < 30){
+    if (getDistance(player1, flower) < 30){
         flower.moveToARandomPlace();
+        raiseScore();
     }
-    if (getDistance(festus, flower) < 30){
+    if (getDistance(player2, flower) < 30){
         flower.moveToARandomPlace();
+        raiseScore2();
     }
     
 };
