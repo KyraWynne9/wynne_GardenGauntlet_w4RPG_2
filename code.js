@@ -22,6 +22,10 @@ let itemSprite = document.getElementById("Memory_flower");
 
 // -----------------------------------------------
 
+// start screen
+document.addEventListener ()
+
+
 // characters array
 let characters1 = [
     new Minerva(),
