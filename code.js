@@ -14,6 +14,7 @@ pencil.imageSmoothingEnabled = false
 
 //grab images
 
+let startScreen = document.getElementById("Start_screen");
 let background = document.getElementById("Background");
 
 
@@ -23,7 +24,7 @@ let itemSprite = document.getElementById("Memory_flower");
 // -----------------------------------------------
 
 // start screen
-document.addEventListener ()
+let state = "start"
 
 
 // characters array
@@ -51,7 +52,7 @@ player1.setup(50, 100, "w", "s", "d", "a")
 console.log(player1.name)
 
 let player2 = toolbox.getRandomItem(characters2)
-player2.setup(775, 100, "i", "k", "l", "j")
+player2.setup(775, 100, "ArrowUp", "ArrowDown", "ArrowRight", "ArrowLeft")
 
 console.log(player2.name)
 
@@ -106,6 +107,7 @@ function getDistance(a, b) {
 }
 
 // points
+let winner
 
 let score1 = 0
 
@@ -113,6 +115,10 @@ function raiseScore() {
     score1 += 1;
     let scoreElement = document.getElementById("scoreDisplay1");
     scoreElement.innerHTML = "Player 1: " + score1;
+    if (score1 == 7) {
+        state = "win"
+        winner = player1
+    }
 }
 let score2 = 0
 
@@ -120,33 +126,62 @@ function raiseScore2() {
     score2 += 1;
     let scoreElement = document.getElementById("scoreDisplay2");
     scoreElement.innerHTML = "Player 2: " + score2;
+        if (score2 == 7) {
+        state = "win"
+        winner = player2
+    }
 }
+
+
 
 // -----------------------------------------------
 // Game loop
 function gameLoop() {
-    // Draw background
+
     pencil.clearRect(0, 0, canvas.width, canvas.height);
-    pencil.drawImage(background, 0, 0, canvas.width, canvas.height);
 
-    // Move characters
-    player1.move(keysPressed);
-    player2.move(keysPressed);
+    if (state == "start") {
 
-    // Draw characters
-    player1.draw();
-    player2.draw(keysPressed);
-
-    // Draw item
-    flower.draw()
-
-    if (getDistance(player1, flower) < 30){
-        flower.moveToARandomPlace();
-        raiseScore();
+        pencil.drawImage(startScreen, 0, 0, canvas.width, canvas.height);
+            if (keysPressed[" "]) {
+                state = "inPlay"
+            }
     }
-    if (getDistance(player2, flower) < 30){
-        flower.moveToARandomPlace();
-        raiseScore2();
+    else if (state == "inPlay") {
+
+        // Draw background
+        
+        pencil.drawImage(background, 0, 0, canvas.width, canvas.height);
+
+        // Move characters
+        player1.move(keysPressed);
+        player2.move(keysPressed);
+
+        // Draw characters
+        player1.draw();
+        player2.draw(keysPressed);
+
+        // Draw item
+        flower.draw()
+
+        if (getDistance(player1, flower) < 30){
+            flower.moveToARandomPlace();
+            raiseScore();
+        }
+        if (getDistance(player2, flower) < 30){
+            flower.moveToARandomPlace();
+            raiseScore2();
+        }
+    }
+
+    else if (state == "win") {
+
+        pencil.drawImage(winner.win, 0, 0, canvas.width, canvas.height);
+
+            if (keysPressed["Enter"]) {
+                state = "start"
+                location.reload();
+            }
     }
     
 };

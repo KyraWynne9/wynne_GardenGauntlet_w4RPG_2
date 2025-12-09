@@ -6,6 +6,7 @@ export class Princeton {
     princetonFront = document.getElementById("Princeton_front");
     princetonRight = document.getElementById("Princeton_right");
     princetonLeft = document.getElementById("Princeton_left");
+    win = document.getElementById("Princeton_win");
     name = "Princeton"
     x = 100;   
     y = 150;

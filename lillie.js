@@ -6,6 +6,7 @@ export class Lillie {
     lillieFront = document.getElementById("Lillie_front");
     lillieRight = document.getElementById("Lillie_right");
     lillieLeft = document.getElementById("Lillie_left");
+    win = document.getElementById("Lillie_win");
     name = "Lillie"
     
     x = 100;   

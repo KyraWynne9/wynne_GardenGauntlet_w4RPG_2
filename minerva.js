@@ -6,6 +6,7 @@ export class Minerva {
     minervaFront = document.getElementById("Minerva_front");
     minervaRight = document.getElementById("Minerva_right");
     minervaLeft = document.getElementById("Minerva_left");
+    win = document.getElementById("Minerva_win");
     name = "Minerva"
     x = 100;   
     y = 150;

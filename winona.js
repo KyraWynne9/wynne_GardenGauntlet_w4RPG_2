@@ -6,6 +6,7 @@ export class Winona {
     winonaFront = document.getElementById("Winona_front");
     winonaRight = document.getElementById("Winona_right");
     winonaLeft = document.getElementById("Winona_left");
+    win = document.getElementById("Winona_win");
     name = "Winona"
     
     x = 100;   

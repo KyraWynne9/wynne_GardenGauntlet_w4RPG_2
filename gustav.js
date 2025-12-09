@@ -6,6 +6,7 @@ export class Gustav {
     gustavFront = document.getElementById("Gustav_front");
     gustavRight = document.getElementById("Gustav_right");
     gustavLeft = document.getElementById("Gustav_left");
+    win = document.getElementById("Gustav_win");
     name = "Gustav"
     
     x = 100;   
