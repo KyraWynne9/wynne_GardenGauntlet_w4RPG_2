@@ -67,9 +67,8 @@ player2.setup(775, 100, "ArrowUp", "ArrowDown", "ArrowRight", "ArrowLeft")
 
 console.log(player2.name)
 
-if (player1.name == player2.name) {
+if (player1.characters1 == player2.characters2) {
     player1 = toolbox.getRandomItem(characters1)
-    player1.setup(50, 100, "w", "s", "d", "a")
 }
 
 
