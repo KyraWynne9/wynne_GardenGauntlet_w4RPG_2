@@ -15,6 +15,8 @@ pencil.imageSmoothingEnabled = false
 
 
 
+
+
 //grab images
 
 let startScreen = document.getElementById("Start_screen");
