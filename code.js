@@ -3,6 +3,9 @@ import { Lillie } from "./lillie.js";
 import { Gustav } from "./gustav.js"
 import { Princeton } from "./princeton.js"
 import { Winona } from "./winona.js"
+import { Samuel } from "./samuel.js";
+import { Eden } from "./eden.js";
+import { Graham } from "./graham.js";
 import { Toolbox } from "./toolbox.js";
 
 // Get the canvas and drawing context
@@ -34,6 +37,9 @@ let characters1 = [
     new Gustav(),
     new Princeton(),
     new Winona(),
+    new Samuel(),
+    new Eden(),
+    new Graham(),
 
 ]
 let characters2 = [
@@ -42,6 +48,9 @@ let characters2 = [
     new Gustav(),
     new Princeton(),
     new Winona(),
+    new Samuel(),
+    new Eden(),
+    new Graham(),
 
 ]
 
