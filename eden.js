@@ -10,8 +10,8 @@ export class Eden {
     name = "Eden"
     x = 100;   
     y = 150;
-    width = 100;
-    height = 100;
+    width = 90;
+    height = 90;
     speed = 10;
     sprite  = this.edenFront;
     draw () {

@@ -10,9 +10,9 @@ export class Graham {
     name = "Graham"
     x = 100;   
     y = 150;
-    width = 110;
-    height = 110;
-    speed = 6;
+    width = 105;
+    height = 105;
+    speed = 10;
     sprite  = this.grahamFront;
     draw () {
         this.pencil.drawImage(this.sprite, this.x, this.y, this.width, this.height);
