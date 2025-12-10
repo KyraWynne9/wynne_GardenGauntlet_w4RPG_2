@@ -173,7 +173,7 @@ function gameLoop() {
         player2.move(keysPressed);
 
         // Draw characters
-        player1.draw();
+        player1.draw(keysPressed);
         player2.draw(keysPressed);
 
         // Draw item
