@@ -45,6 +45,7 @@ let itemSprite = document.getElementById("Memory_flower");
 
 // start screen
 let state = "start"
+soundStart.play();
 
 
 // characters array
@@ -161,7 +162,7 @@ function gameLoop() {
 
     if (state == "start") {
 
-        soundStart.play();
+        
         pencil.drawImage(startScreen, 0, 0, canvas.width, canvas.height);
         
             if (keysPressed[" "]) {
