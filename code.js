@@ -14,6 +14,14 @@ let pencil = canvas.getContext("2d");
 pencil.imageSmoothingEnabled = false
 
 
+let soundStart = new Howl({
+    src: ["music/entry of the gladiators.mp3"],
+    volume: 1,
+    loop: false,
+    rate: 1
+});
+
+
 
 
 
@@ -160,6 +168,7 @@ function gameLoop() {
         pencil.drawImage(startScreen, 0, 0, canvas.width, canvas.height);
             if (keysPressed[" "]) {
                 state = "inPlay"
+                soundStart.play();
             }
     }
     else if (state == "inPlay") {
@@ -168,6 +177,7 @@ function gameLoop() {
         
         pencil.drawImage(background, 0, 0, canvas.width, canvas.height);
 
+        
         // Move characters
         player1.move(keysPressed);
         player2.move(keysPressed);
