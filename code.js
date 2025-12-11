@@ -15,7 +15,14 @@ pencil.imageSmoothingEnabled = false
 
 
 let soundStart = new Howl({
-    src: ["music/entry of the gladiators.mp3"],
+    src: ["music/paper mario intro.mp3"],
+    volume: 1,
+    loop: false,
+    rate: 1
+});
+
+let soundPlay = new Howl({
+    src: ["music/pandora palace.mp3"],
     volume: 1,
     loop: false,
     rate: 1
@@ -41,7 +48,7 @@ let state = "start"
 
 
 // characters array
-let characters1 = [
+let characters = [
     new Minerva(),
     new Lillie(),
     new Gustav(),
@@ -51,34 +58,23 @@ let characters1 = [
     new Eden(),
     new Graham(),
 
-]
-let characters2 = [
-    new Minerva(),
-    new Lillie(),
-    new Gustav(),
-    new Princeton(),
-    new Winona(),
-    new Samuel(),
-    new Eden(),
-    new Graham(),
-
-]
+];
 
 let toolbox = new Toolbox()
-let player1 = toolbox.getRandomItem(characters1)
+let player1 = toolbox.getRandomItem(characters)
+
+characters = characters.filter(x => x.name != player1.name);
+
+
 player1.setup(50, 100, "w", "s", "d", "a")
 
 console.log(player1.name)
 
-let player2 = toolbox.getRandomItem(characters2)
+let player2 = toolbox.getRandomItem(characters)
 player2.setup(775, 100, "ArrowUp", "ArrowDown", "ArrowRight", "ArrowLeft")
 
 console.log(player2.name)
 
-
-if (player1.characters1 == player2.characters2) {
-    player1 = toolbox.getRandomItem(characters1)
-}
 
 // player controls
 // let player1 = new Minerva(50, 50, "w", "s", "d", "a");
@@ -165,10 +161,13 @@ function gameLoop() {
 
     if (state == "start") {
 
+
         pencil.drawImage(startScreen, 0, 0, canvas.width, canvas.height);
+        
             if (keysPressed[" "]) {
                 state = "inPlay"
-                soundStart.play();
+                soundStart.stop();
+                soundPlay.play();
             }
     }
     else if (state == "inPlay") {
