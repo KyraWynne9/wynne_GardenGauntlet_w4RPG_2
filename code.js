@@ -14,14 +14,14 @@ let pencil = canvas.getContext("2d");
 pencil.imageSmoothingEnabled = false
 
 
-let soundStart = new Howl({
+const soundStart = new Howl({
     src: ["music/paper mario intro.mp3"],
     volume: 1,
     loop: false,
     rate: 1
 });
 
-let soundPlay = new Howl({
+const soundPlay = new Howl({
     src: ["music/pandora palace.mp3"],
     volume: 1,
     loop: false,
@@ -161,7 +161,7 @@ function gameLoop() {
 
     if (state == "start") {
 
-
+        soundStart.play();
         pencil.drawImage(startScreen, 0, 0, canvas.width, canvas.height);
         
             if (keysPressed[" "]) {
